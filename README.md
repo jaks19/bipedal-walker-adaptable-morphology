@@ -1,15 +1,17 @@
 # bipedal-walker-adaptable-morphology
 
-We investigate whether allowing an agent to modify its own morphology has any beneficial effect on the task finding optimal locomotive policies, on terrains of varying difficulty. Work is inspired by David Ha's and UberLabs' previous work using this agent and this environment respectively.
+We investigate whether allowing an agent to modify its own morphology has any beneficial effect on the task finding optimal locomotive policies, on terrains of varying difficulty. Work is inspired by David Ha's and UberLabs' previous work using this agent and the flexibility of the terrain in this environment respectively.
 
 We use the augmented random search algorithm to optimize the policy of a bipedal walker (parametrized by a feed-forward neural network). The bipedal walker is taken from the environment [BipedalWalker-V2](https://gym.openai.com/envs/BipedalWalker-v2) of the OpenAI gym but to vary the terrains, we extend the [work of UberLabs](https://eng.uber.com/poet-open-ended-deep-learning/).
 
 ## Code
-The code philosophy is simple: we allow you to design any environment you'd like, then you can train a locomotion policy (while optimizing for the morphology of the agent) using augmented random search. Our code saves your models automatically at eppoch intervals and you may set the debug option to True to visualize the progress of your walker at intervals. Alternatively, you can load a saved model with the debug option to visualze what policy and morphology were learnt. 
+The code philosophy is simple: we allow you to design any environment you'd like, then you can train a locomotion policy (while optimizing for the morphology of the agent) using augmented random search. Our code saves your models automatically at epoch intervals and you may set the debug option to True to visualize the progress of your walker at intervals. Alternatively, you can load a saved model with the debug option to visualize what policy and morphology were learnt. 
 
-Here is an example of an environment that we design. It was impossible to solve at first. But we learn bith a walking policy and a body shape that makes the environment solvable.
+Here is an example of an environment that we design. It was impossible to solve at first. But we learn both a walking policy and a body shape that makes the environment solvable.
 
 ![Cool morph adaptation](https://github.com/jaks19/bipedal-walker-adaptable-morphology/blob/master/gifs/gif_fail.gif)
+
+![Cool morph adaptation](https://github.com/jaks19/bipedal-walker-adaptable-morphology/blob/master/gifs/gif_pass.gif)
 
 ### To design any custom environment:
 Modify the ENV_CONFIG object placed at the top of main.py.
@@ -28,4 +30,11 @@ ENV_CONFIG = Env_config(
     )
 ```
 
-### To run training
+### To run training on a chosen environment
+python main.py 
+--log_dir [log directory path] 
+--num_cores [choose how many cores] 
+--npop [choose how many model replicas] 
+--num_workers [choose how many threads to create over which to spread the replicas] 
+--debug [Incluse with 'True' if want to visualize] 
+--save_interval [choose an int and will save model after this many epochs
