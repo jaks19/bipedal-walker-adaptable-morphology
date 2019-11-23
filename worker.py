@@ -32,7 +32,7 @@ class Worker(object):
 
         return h
 
-    def evaluate_model(self, batch, num_rollouts=1):
+    def evaluate_model(self, batch, num_rollouts=1, debug=False):
         returned_container = []
 
         for b in batch:
@@ -51,6 +51,7 @@ class Worker(object):
                 while True:
                     action = self.get_action(state, model)
                     state, reward, done, info = env._step(action)
+                    if debug: env.render()
                     total_reward += reward
                     steps += 1
 
