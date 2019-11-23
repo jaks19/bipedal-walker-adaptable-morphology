@@ -31,10 +31,22 @@ ENV_CONFIG = Env_config(
 ```
 
 ### To run training on a chosen environment
-python main.py 
---log_dir [log directory path] 
---num_cores [choose how many cores] 
---npop [choose how many model replicas] 
---num_workers [choose how many threads to create over which to spread the replicas] 
---debug [Incluse with 'True' if want to visualize] 
---save_interval [choose an int and will save model after this many epochs
+python main.py
+
+Here are the args with help on how to use them
+'''
+parser.add_argument('--log_dir', type=str, help='log directory')
+parser.add_argument('--num_cores', type=int, help='num cpu cores')
+parser.add_argument('--npop', type=int, help='num model replicas per epoch')
+parser.add_argument('--num_workers', type=int, help='number of data-collecting workers (will split npop among workers')
+parser.add_argument('--saved_model', type=str, default=None, help='saved model path if desired')
+
+parser.add_argument('--sigma', type=float, default=0.1, help='for random search')
+parser.add_argument('--alpha', type=float, default=0.03, help='for random search')
+
+parser.add_argument('--scale_limit_lower', type=float, default=1, help='size limit of agent (min)')
+parser.add_argument('--scale_limit_upper', type=float, default=1, help='size limit of agent (max)')
+
+parser.add_argument('--debug', type=bool, default=True, help='include with True if want to visualize agent in env')
+parser.add_argument('--save_interval', type=int, default=10,  help='save policy after every --this number-- of epochs')
+'''
