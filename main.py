@@ -102,7 +102,7 @@ if __name__ == "__main__":
     parser.add_argument('--initial_scalar', type=float, default=1)
     
     parser.add_argument('--debug', type=bool, default=True)
-
+    parser.add_argument('--save_interval', type=int, default=10)
 
     args = parser.parse_args()
     
@@ -162,7 +162,7 @@ if __name__ == "__main__":
         writer.add_scalar('cur_reward', cur_reward, i)
         writer.add_scalar('aver_reward', aver_reward, i)
 
-        if i %10 == 0: pickle.dump(model, open(os.path.join(args.log_dir, f'''models/model-pedal-{cur_reward}-{model['morph'][0]}-{model['morph'][1]}-{model['morph'][2]}-{model['morph'][3]}-{model['morph'][4]}-{model['morph'][5]}-{model['morph'][6]}-{model['morph'][7]}.p'''), 'wb'))
+        if i % args.save_interval == 0: pickle.dump(model, open(os.path.join(args.log_dir, f'''models/model-pedal-{cur_reward}-{model['morph'][0]}-{model['morph'][1]}-{model['morph'][2]}-{model['morph'][3]}-{model['morph'][4]}-{model['morph'][5]}-{model['morph'][6]}-{model['morph'][7]}.p'''), 'wb'))
 
         # New model is a weighted combination (based on resulting rewards) of perturbed models + old model
         A = (R - np.mean(R)) / np.std(R)
