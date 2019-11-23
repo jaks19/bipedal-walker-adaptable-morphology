@@ -2,7 +2,7 @@
 
 We investigate whether allowing an agent to modify its own morphology has any beneficial effect on the task finding optimal locomotive policies, on terrains of varying difficulty. Work is inspired by David Ha's and UberLabs' previous work using this agent and the flexibility of the terrain in this environment respectively.
 
-We use the augmented random search algorithm to optimize the policy of a bipedal walker (parametrized by a feed-forward neural network). The bipedal walker is taken from the environment [BipedalWalker-V2](https://gym.openai.com/envs/BipedalWalker-v2) of the OpenAI gym but to vary the terrains, we extend the [work of UberLabs](https://eng.uber.com/poet-open-ended-deep-learning/).
+We use the augmented random search algorithm to optimize the locomotive policy of a bipedal walker (parametrized by a feed-forward neural network). The bipedal walker is taken from the environment [BipedalWalker-V2](https://gym.openai.com/envs/BipedalWalker-v2) of the OpenAI gym but to vary the terrains, we extend the [work of UberLabs](https://eng.uber.com/poet-open-ended-deep-learning/).
 
 ## Code
 The code philosophy is simple: we allow you to design any environment you'd like, then you can train a locomotion policy (while optimizing for the morphology of the agent) using augmented random search. Our code saves your models automatically at epoch intervals and you may set the debug option to True to visualize the progress of your walker at intervals. Alternatively, you can load a saved model with the debug option to visualize what policy and morphology were learnt. 
