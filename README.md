@@ -34,7 +34,7 @@ ENV_CONFIG = Env_config(
 python main.py
 
 Here are the args with help on how to use them
-'''
+```
 parser.add_argument('--log_dir', type=str, help='log directory')
 parser.add_argument('--num_cores', type=int, help='num cpu cores')
 parser.add_argument('--npop', type=int, help='num model replicas per epoch')
@@ -49,4 +49,7 @@ parser.add_argument('--scale_limit_upper', type=float, default=1, help='size lim
 
 parser.add_argument('--debug', type=bool, default=True, help='include with True if want to visualize agent in env')
 parser.add_argument('--save_interval', type=int, default=10,  help='save policy after every --this number-- of epochs')
-'''
+```
+
+Example:
+python main.py --log_dir ./logs/ --num_cores 4 --npop 10 --num_workers 3 --save_interval 10 --debug True
