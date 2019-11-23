@@ -9,7 +9,7 @@ The code philosophy is simple: we allow you to design any environment you'd like
 
 Here is an example of an environment that we design. It was impossible to solve at first. But we learn bith a walking policy and a body shape that makes the environment solvable.
 
-![Cool morph adaptation](https://github.com/jaks19/bipedal-walker-adaptable-morphology/blob/master/gifs/gif_fail.png)
+![Cool morph adaptation](https://github.com/jaks19/bipedal-walker-adaptable-morphology/blob/master/gifs/gif_fail.gif)
 
 ### To design any custom environment:
 Modify the ENV_CONFIG object placed at the top of main.py.
